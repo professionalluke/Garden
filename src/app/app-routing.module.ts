@@ -7,6 +7,7 @@ import { AuthComponent } from './auth/auth.component';
 
 
 const routes: Routes = [
+
   {path: 'home', component: HomeComponent },
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'products', component: ProductsComponent},
@@ -19,3 +20,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
