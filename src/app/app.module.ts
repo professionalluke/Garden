@@ -9,7 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AboutComponent } from './about/about.component';
 import { ProductsComponent } from './products/products.component';
 import { AuthComponent } from './auth/auth.component';
+import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { LoginComponent } from './login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    
     RouterModule.forRoot([
       {
         path: 'login',
@@ -40,6 +44,7 @@ import { LoginComponent } from './login/login.component';
       },
 
     ])
+
   ],
   providers: [],
   bootstrap: [AppComponent]
