@@ -1,3 +1,13 @@
-<p>
-  products works!
-</p>
+<h2>Our Plants</h2>
+
+<div class="deck">
+  <div class="cardContainer">
+    <div class="card" 
+    *ngFor="let plant of plants">
+      <h1><i>{{plant.product_name}}</i></h1>
+      <p>{{plant.product_description}}</p>
+      <p>${{plant.product_price}}.00</p>
+    <button class="delete" title="delete plant"
+    (click)="delete(plant)">Delete</button>
+  </div></div>
+</div>

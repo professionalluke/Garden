@@ -1,0 +1,19 @@
+.deck {
+    display: inline-block;
+}
+
+.card {
+    box-shadow: 0em 0.5em 1em rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 20vw;
+    text-align: center;
+}
+
+.card:hover {
+    box-shadow: 0.5em 0.5em 2em rgba(0,0,0,0.2);
+    cursor: pointer;
+}
+
+.cardContainer {
+    padding: 1em 2em;
+}
