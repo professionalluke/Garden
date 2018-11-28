@@ -8,10 +8,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { AboutComponent } from './about/about.component';
 import { ProductsComponent } from './products/products.component';
 import { AuthComponent } from './auth/auth.component';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthenticationService } from './services/authentication.service';
-
+import { LoginComponent} from './login/login.component';
 
 @NgModule({
   declarations: [
