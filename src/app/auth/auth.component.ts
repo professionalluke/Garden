@@ -17,6 +17,7 @@ export class AuthComponent implements OnInit {
     private fb: FormBuilder, 
     private authService: AuthenticationService) { }
 
+
   ngOnInit() {
     this.login = this.fb.group({
       email: new FormControl(),
