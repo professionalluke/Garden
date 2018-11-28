@@ -7,7 +7,6 @@ import { User } from '../models/user.model';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': sessionStorage.getItem('token')
   })
 }
 
@@ -20,10 +19,5 @@ export class AuthenticationService {
 
   login(user: User): Observable<User[]>{
     return this.http.post<User[]>(this.userUrl, user, httpOptions)
-  }
-
-  delete(id) {
-    let deleteUrl=`https://efa-gardenapp-backend.herokuapp.com/api/product/${id}`
-    return this.http.delete(deleteUrl, httpOptions)
   }
 }
