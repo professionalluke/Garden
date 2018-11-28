@@ -8,14 +8,13 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  users: Object;
-
-  constructor(private data: AuthService) { }
+  constructor() { }
 
   ngOnInit() {
-    
-    
   }
 
- 
+  loginUser(event) {
+    event.preventDefault()
+    console.log(event)
+  }
 }

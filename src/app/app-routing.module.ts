@@ -6,9 +6,7 @@ import { AboutComponent } from './about/about.component';
 import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './login/login.component';
 
-
 const routes: Routes = [
-
   {path: 'home', component: HomeComponent },
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'products', component: ProductsComponent},
@@ -21,5 +19,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
 
+export class AppRoutingModule { }
