@@ -4,10 +4,10 @@ import { Observable } from 'rxjs';
 
 import { User } from '../models/user.model';
 
-
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Authorization': sessionStorage.getItem('token')
   })
 }
 
@@ -18,7 +18,12 @@ export class AuthenticationService {
 
   constructor(private http: HttpClient) { }
 
-  login (user: User): Observable<User[]>{
+  login(user: User): Observable<User[]>{
     return this.http.post<User[]>(this.userUrl, user, httpOptions)
+  }
+
+  delete(id) {
+    let deleteUrl=`https://efa-gardenapp-backend.herokuapp.com/api/product/${id}`
+    return this.http.delete(deleteUrl, httpOptions)
   }
 }

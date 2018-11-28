@@ -6,7 +6,8 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Plant } from '../models/plant.model';
 const httpOptions = {
   headers: new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'Authorization': sessionStorage.getItem('token')
   })
 }
 
@@ -35,13 +36,9 @@ export class PlantService {
     )
   }
 
-  deletePlant(plant: Plant | number): Observable<Plant> {
-    const id = typeof plant ==='number' ? plant : plant.id;
-    const url =`${this.plantUrl}/${id}`;
-
-    return this._http.delete<Plant>(url, httpOptions).pipe(
-      catchError(this.handleError<Plant>('deletePlant'))
-    )
+  deletePlant(id: any): Observable<Plant> {
+    let deleteUrl=`https://efa-gardenapp-backend.herokuapp.com/api/product/${id.id}`
+    return this._http.delete<Plant>(deleteUrl, httpOptions)
   }
 
   private log(message: string) {  }
