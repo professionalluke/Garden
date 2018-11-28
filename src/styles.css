@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 html{
-    background-color: #88e391;
+    background: url('./assets/GardenBackground.jpg') no-repeat;
+    background-size: cover; 
+
   }

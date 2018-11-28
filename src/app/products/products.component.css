@@ -1,5 +1,5 @@
-.deck {
-    display: inline-block;
+h2 {
+    
 }
 
 .card {
@@ -7,6 +7,9 @@
     transition: 0.3s;
     width: 20vw;
     text-align: center;
+    background-color: #88e391;
+    display: inline-block;
+    margin: 2em;
 }
 
 .card:hover {
