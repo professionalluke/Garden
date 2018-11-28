@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
 
 import { Plant } from '../models/plant.model';
 import { PlantService } from '../services/plant.service';
@@ -42,7 +41,4 @@ export class ProductsComponent implements OnInit {
     this.plantService.getPlant(id)
       .subscribe(plant => this.plant = plant)
   }
-
-
-
 }
