@@ -37,10 +37,5 @@ export class AuthComponent implements OnInit {
 
   get f() { return this.loginForm.controls; }
 
-  onSubmit() {
-    this.submitted = true;
-    if (this.loginForm.invalid) {
-      return;
-    }
-  }
+ 
 }
