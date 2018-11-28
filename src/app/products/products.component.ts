@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
 
 import { Plant } from '../models/plant.model';
 import { PlantService } from '../services/plant.service';
+import { AuthenticationService } from '../services/authentication.service'
 
 @Component({
   selector: 'app-products',
@@ -18,6 +18,7 @@ export class ProductsComponent implements OnInit {
   constructor(
     private plantService: PlantService,
     private route: ActivatedRoute,) { }
+    private authService: AuthenticationService
 
   ngOnInit() : void {
     this.getPlants();
@@ -29,12 +30,14 @@ export class ProductsComponent implements OnInit {
     // .pipe(map(p => {<any>}))
     .subscribe(plants => this.plants = plants) 
   }
-
-  
   
   delete(plant: Plant): void {
+    // if(sessionStorage.value == 'token'){
     this.plants = this.plants.filter(p => p !== plant);
-    this.plantService.deletePlant(plant).subscribe();
+    this.plantService.deletePlant(plant).subscribe((res: any) => console.log(res));
+  //} //else {
+    // alert ("You can't do that")
+    // }
   }
 
   getPlant(): void {
@@ -42,7 +45,4 @@ export class ProductsComponent implements OnInit {
     this.plantService.getPlant(id)
       .subscribe(plant => this.plant = plant)
   }
-
-
-
 }
