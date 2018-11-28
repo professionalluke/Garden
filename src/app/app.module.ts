@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -10,7 +9,8 @@ import { AboutComponent } from './about/about.component';
 import { ProductsComponent } from './products/products.component';
 import { AuthComponent } from './auth/auth.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthenticationService } from './services/authentication.service';
 
 
 @NgModule({
@@ -27,26 +27,11 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    
-    RouterModule.forRoot([
-      {
-        path: 'login',
-        component: LoginComponent
-      },
-
-      {
-        path:'auth',
-        component: AuthComponent
-      },
-      
-      { path: '',
-        component: HomeComponent
-      },
-
-    ])
+    FormsModule,
+    ReactiveFormsModule
 
   ],
-  providers: [],
+  providers: [AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

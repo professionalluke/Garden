@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 
 export class AuthService {
+  private loginUrl= 'https://efa-gardenapp-backend.herokuapp.com/api/auth/login'
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
   
-  getUserDetails(){
-  //post these details to API Server return user info if correct
-  }
 }
+
+

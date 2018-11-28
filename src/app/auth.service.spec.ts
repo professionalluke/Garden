@@ -1,12 +1,12 @@
-import { TestBed } from '@angular/core/testing';
+import { Injectable } from '@angular/core';
 
-import { AuthService } from './auth.service';
+@Injectable()
 
-describe('AuthService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+export class AuthService {
 
-  it('should be created', () => {
-    const service: AuthService = TestBed.get(AuthService);
-    expect(service).toBeTruthy();
-  });
-});
+  constructor() { }
+  
+  getUserDetails(){
+  //post these details to API Server return user info if correct
+  }
+}
