@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
-
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
@@ -11,36 +8,28 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  loginForm: FormGroup;
-  loading: false;
-  submitted: false;
-  returnUrl: string;
+  login: FormGroup
+  token = ''
+  private user = []
+
+
   constructor(
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
-    private authenticationService: AuthenticationService,
-  ) { if (this.authenticationService.currentUserValue){
-          this.router.navigate(['/']);
-    } 
-  }
+    private fb: FormBuilder, 
+    private authService: AuthenticationService) { }
 
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.login = this.fb.group({
+      email: new FormControl(),
+      password: new FormControl()
+    })
   }
 
-  get f() { return this.loginForm.controls; }
-
-  onSubmit() {
-    this.submitted = true;
-    if (this.loginForm.invalid) {
-      return;
+  onLogin() {
+    if (this.login.invalid) {
+      alert ('email or password does not match');
     }
+    this.authService.login(this.login.value).subscribe((res: any) => {this.token = res.token; sessionStorage.setItem('token', this.token)})
   }
+  
 }

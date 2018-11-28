@@ -30,4 +30,6 @@ export class AboutComponent implements OnInit {
 
     this.success = true;
   }
+
 }
+
