@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
-
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms'
 import { AuthenticationService } from '../services/authentication.service';
+import { User } from '../models/user.model'
 
 @Component({
   selector: 'app-auth',
@@ -11,35 +9,25 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
-  loginForm: FormGroup;
-  loading: false;
-  submitted: false;
-  returnUrl: string;
+  login: FormGroup
+  private _user = []
+  User: User
+
   constructor(
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
-    private authenticationService: AuthenticationService,
-  ) { if (this.authenticationService.currentUserValue){
-          this.router.navigate(['/']);
-    } 
-  }
+    private _fb: FormBuilder, 
+    private authService: AuthenticationService) { }
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.login = this._fb.group({
+      email: new FormControl(),
+      password: new FormControl()
+    })
   }
 
-  get f() { return this.loginForm.controls; }
-
-  onSubmit() {
-    this.submitted = true;
-    if (this.loginForm.invalid) {
-      return;
-    }
+  onLogin(): void {
+    this._user.push(this.login)
+    this.authService.login(this._user[0].value).subscribe(
+      User => localStorage.setItem('token', User['token'])
+      );
   }
 }

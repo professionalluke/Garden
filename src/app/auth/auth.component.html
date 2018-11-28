@@ -1,21 +1,21 @@
-<h2>Login</h2>>
-<form [formGroup]="loginForm" (ngSubmit)=onSubmit()">
-  <div class="form-group">
-    <label for="username">Username</label>
-    <input type="text" formControlName="username" class="form-control" [ngClass] = "{ 'is-invalid': submitted && f.username.errors }" />
-    <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-      <div *ngIf="f.username.errors.reqwuired">Username is required</div>
-    </div>
-  </div>
+<h2>Admin Login</h2>
+<!-- <div [formGroup]="login"> -->
 
-  <div class="form-group">
-    <label for="password" formControlName="password" class="form-control" [ngCLass]="{'is-invalid': submitted && f.password.errors}" />
-    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-      <div *ngIf="f.password.errors.required">Password is required</div>
-    </div>
-  </div>
+  <form [formGroup]="login" (ngSubmit)="onLogin()">
+    <label for="username">Email</label>
+    <input 
+      type="text" 
+      placeholder="Email"
+      formControlName="email" 
+      name="email" >
 
-  <div class="form-group">
-    <button [disabled]="loading" class="btn btn-primary">Login</button>
-  </div>
-</form>"
+    <label for="password">Password</label>
+    <input
+      type="password"
+      placeholder="Password"
+      formControlName="password"
+      name="password" >
+
+    <button type="submit">Login</button>
+  </form>
+<!-- </div> -->
